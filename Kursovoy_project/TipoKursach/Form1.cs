@@ -22,6 +22,7 @@ namespace TipoKursach
 
         private Particle info_particle = null; // информация о частице
 
+        public static DeathCircle _deathCircle; // спец. точка
 
         public Form1()
         {
@@ -32,6 +33,7 @@ namespace TipoKursach
             Simulations.Add(particles); // добавляем список частиц в список симуляции для формирования истории
 
 
+            DeathCircle(); // вызов метода спец. точки
             StartStopTimer(); // вызов метода запуска/остановки программы
         }
 
@@ -51,6 +53,23 @@ namespace TipoKursach
             }
         }
 
+        // спец. точка
+        private void DeathCircle()
+        {
+            int count = 0;
+            //добавляем точку на форму
+            _deathCircle = new DeathCircle(
+                PbMain.Image.Width / 2,
+                PbMain.Image.Height / 2,
+                50
+                );
+            // реакция на пересечение точки с формой
+            _deathCircle.OnParticleOverlap += (prt) =>
+            {
+                (prt as Particle).Life = 0;
+                _deathCircle.count += 1;
+            };
+        }
 
         // метод генерации частиц
         private Particle GenerateParticle()
@@ -113,6 +132,11 @@ namespace TipoKursach
                 {
                     particle.Move();
                 }
+
+                if (_deathCircle.OvelapsWith(particle))
+                {
+                    _deathCircle.OverlapParticle(particle);
+                }
             }
         }
 
@@ -162,6 +186,8 @@ namespace TipoKursach
                 {
                     particle.Draw(g); // отрисовываем частицы
                 }
+
+                _deathCircle.Draw(g); // отрисовываем спец.точку
             }
 
             PbMain.Invalidate(); // обновляем пикчербокс
@@ -230,12 +256,15 @@ namespace TipoKursach
             RenderObjs(); // рендерим объекты
         }
 
+        // trackbar скорости движения частиц
         private void SpeedBar_Scroll(object sender, EventArgs e)
         {
             timer1.Interval = 16 + (SpeedBar.Maximum - SpeedBar.Value) * 40; //задаем время в миллисекундах в зависимости от значения trackbar
         }
+
     }
 }
+
 
 
 
