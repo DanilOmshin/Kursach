@@ -230,7 +230,10 @@ namespace TipoKursach
             RenderObjs(); // рендерим объекты
         }
 
-
+        private void SpeedBar_Scroll(object sender, EventArgs e)
+        {
+            timer1.Interval = 16 + (SpeedBar.Maximum - SpeedBar.Value) * 40; //задаем время в миллисекундах в зависимости от значения trackbar
+        }
     }
 }
 

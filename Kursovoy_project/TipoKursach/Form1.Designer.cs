@@ -39,9 +39,12 @@
             this.InfoLabel = new System.Windows.Forms.Label();
             this.GenerationBarLabel = new System.Windows.Forms.Label();
             this.GenerationBar = new System.Windows.Forms.TrackBar();
+            this.SpeedBar = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParticlesCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GenerationBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedBar)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -80,7 +83,7 @@
             // 
             // ParticlesCounter
             // 
-            this.ParticlesCounter.Location = new System.Drawing.Point(735, 12);
+            this.ParticlesCounter.Location = new System.Drawing.Point(735, 111);
             this.ParticlesCounter.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -103,7 +106,7 @@
             // ParticlesCountLabel
             // 
             this.ParticlesCountLabel.AutoSize = true;
-            this.ParticlesCountLabel.Location = new System.Drawing.Point(735, 44);
+            this.ParticlesCountLabel.Location = new System.Drawing.Point(735, 134);
             this.ParticlesCountLabel.Name = "ParticlesCountLabel";
             this.ParticlesCountLabel.Size = new System.Drawing.Size(103, 13);
             this.ParticlesCountLabel.TabIndex = 10;
@@ -124,7 +127,7 @@
             // GenerationBarLabel
             // 
             this.GenerationBarLabel.AutoSize = true;
-            this.GenerationBarLabel.Location = new System.Drawing.Point(740, 118);
+            this.GenerationBarLabel.Location = new System.Drawing.Point(735, 219);
             this.GenerationBarLabel.Name = "GenerationBarLabel";
             this.GenerationBarLabel.Size = new System.Drawing.Size(166, 13);
             this.GenerationBarLabel.TabIndex = 12;
@@ -132,18 +135,38 @@
             // 
             // GenerationBar
             // 
-            this.GenerationBar.Location = new System.Drawing.Point(735, 70);
+            this.GenerationBar.Location = new System.Drawing.Point(735, 171);
             this.GenerationBar.Maximum = 0;
             this.GenerationBar.Name = "GenerationBar";
             this.GenerationBar.Size = new System.Drawing.Size(171, 45);
             this.GenerationBar.TabIndex = 11;
             this.GenerationBar.Scroll += new System.EventHandler(this.GenerationBar_Scroll);
             // 
+            // SpeedBar
+            // 
+            this.SpeedBar.Location = new System.Drawing.Point(738, 12);
+            this.SpeedBar.Name = "SpeedBar";
+            this.SpeedBar.Size = new System.Drawing.Size(156, 45);
+            this.SpeedBar.TabIndex = 1;
+            this.SpeedBar.Value = 10;
+            this.SpeedBar.Scroll += new System.EventHandler(this.SpeedBar_Scroll);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(735, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Замедление";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 442);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SpeedBar);
             this.Controls.Add(this.GenerationBarLabel);
             this.Controls.Add(this.GenerationBar);
             this.Controls.Add(this.ParticlesCountLabel);
@@ -158,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PbMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParticlesCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GenerationBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,6 +198,8 @@
         private System.Windows.Forms.Label InfoLabel;
         private System.Windows.Forms.Label GenerationBarLabel;
         private System.Windows.Forms.TrackBar GenerationBar;
+        private System.Windows.Forms.TrackBar SpeedBar;
+        private System.Windows.Forms.Label label1;
     }
 }
 
